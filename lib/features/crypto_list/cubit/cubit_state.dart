@@ -21,7 +21,6 @@ class CryptoListLoaded extends CryptoListState {
   final List<CryptoCoin> coinsList;
 
   const CryptoListLoaded({required this.coinsList});
-  
 
   @override
   List<Object> get props => [coinsList];

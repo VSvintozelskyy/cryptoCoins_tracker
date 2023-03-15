@@ -1,5 +1,4 @@
-
-
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
 class CryptoCoin extends Equatable {
@@ -37,13 +36,11 @@ class CryptoCoin extends Equatable {
     }
     final fullDouble = double.parse(str);
     final string = fullDouble.toStringAsFixed(2);
-    
+
     return string;
   }
 
-  
-
-  CryptoCoin copyWith(CryptoCoin coinsList, {
+  CryptoCoin copyWith({
     String? symbol,
     String? priceUsd,
     String? changePercent24Hr,
