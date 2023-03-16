@@ -28,7 +28,7 @@ class _PriceUsdState extends State<CoinPriceUsd> {
             (previous as CryptoListLoaded).coinsList[widget.index].priceUsd;
         final cur =
             (current as CryptoListLoaded).coinsList[widget.index].priceUsd;
-        if (cur != prev) {
+        if (cur != prev && cur != '' && prev != '') {
           if (double.parse(cur!) > double.parse(prev!)) {
             setState(() {
               changePrice(Colors.green, "assets/images/up-arrow.png");
@@ -57,6 +57,7 @@ class _PriceUsdState extends State<CoinPriceUsd> {
                           .coinsList[widget.index]
                           .priceUsd
                           .toString(),
+                          maxLines: 1,
                       style: const TextStyle(fontSize: 20, color: Colors.white),
                     )),
               ),
@@ -68,7 +69,7 @@ class _PriceUsdState extends State<CoinPriceUsd> {
                   alignment: Alignment.centerLeft,
                   color: color.withOpacity(0.1),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 8.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Container(
                       alignment: Alignment.center,
                       height: 20,
@@ -100,9 +101,11 @@ class _PriceUsdState extends State<CoinPriceUsd> {
       opacity = 1;
     });
     Future.delayed(const Duration(seconds: 1), () {
-      setState(() {
+      if (mounted) {
+        setState(() {
         opacity = 0.0;
       });
+      }
     });
   }
 }
